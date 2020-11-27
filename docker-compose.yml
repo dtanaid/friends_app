@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:11
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: friends_development
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:5.0.7
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/app/node_modules
+    env_file: .env
+    working_dir: /app
+    depends_on:
+      - "database"
+      - "redis"
+    ports:
+      - "3000:3000"
+
+volumes:
+  gem_cache:
+  db_data:
+  node_modules:

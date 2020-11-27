@@ -9,6 +9,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+gem 'pg', '~>1.1.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -39,7 +40,7 @@ group :development do
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  #gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do

@@ -1,0 +1,2 @@
+CREATE USER app_user;
+ALTER USER app_user WITH SUPERUSER;
